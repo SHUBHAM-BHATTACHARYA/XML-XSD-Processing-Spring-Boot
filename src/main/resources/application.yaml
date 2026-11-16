@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: xmlProcessing
+
+  # SQL Server Configuration
+  datasource:
+    url: jdbc:sqlserver://localhost:1433;databaseName=FileStorageDB;encrypt=true;trustServerCertificate=true
+    username: sa
+    password: admin
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+
+  # JPA / Hibernate
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.SQLServerDialect
+
+# Swagger UI Path: http://localhost:8080/swagger-ui.html
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+

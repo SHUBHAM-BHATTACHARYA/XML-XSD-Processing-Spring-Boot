@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order>
+    <OrderId>ORD-1001</OrderId>
+    <CustomerName>Jane Doe</CustomerName>
+    <Amount>250.75</Amount>
+</Order>
