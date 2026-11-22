@@ -5,6 +5,7 @@ import com.example.shubham.xmlService.xmlProcessing.service.XmlProcessingService
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +25,8 @@ public class XmlPayloadController {
         this.processingService = processingService;
     }
 
-    @Operation(summary = "1. Upload XML file, validate against XSD, and save to DB")
+    @Operation(summary = "1. Upload XML file, validate against XSD, and save to DB",
+            security = @SecurityRequirement(name = "bearerAuth"))
     @PostMapping(value = "/upload", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
     public ResponseEntity<?> uploadXmlFile(
             @Parameter(
@@ -44,7 +46,8 @@ public class XmlPayloadController {
         }
     }
 
-    @Operation(summary = "2. Fetch XML by ID, process operation, and save to response field")
+    @Operation(summary = "2. Fetch XML by ID, process operation, and save to response field",
+            security = @SecurityRequirement(name = "bearerAuth"))
     @PostMapping("/{id}/process")
     public ResponseEntity<?> processXmlRecord(@PathVariable Long id) {
         try {
@@ -59,8 +62,9 @@ public class XmlPayloadController {
         }
     }
 
-    @Operation(summary = "3. Fetch only the request XML payload by ID")
-    @GetMapping(value = "/{id}/request", produces = MediaType.APPLICATION_XML_VALUE)
+    @Operation(summary = "3. Fetch only the request XML payload by ID",
+                security = @SecurityRequirement(name = "bearerAuth"))
+    @GetMapping(value = "/{id}/requestPayload", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> getRequestPayload(@PathVariable Long id) {
         try {
             String responseXml = processingService.getRequestPayload(id);
@@ -78,8 +82,9 @@ public class XmlPayloadController {
         }
     }
 
-    @Operation(summary = "4. Fetch only the processed response XML payload by ID")
-    @GetMapping(value = "/{id}/response", produces = MediaType.APPLICATION_XML_VALUE)
+    @Operation(summary = "4. Fetch only the processed response XML payload by ID",
+            security = @SecurityRequirement(name = "bearerAuth"))
+    @GetMapping(value = "/{id}/responsePayload", produces = MediaType.APPLICATION_XML_VALUE)
     public ResponseEntity<?> getResponsePayload(@PathVariable Long id) {
         try {
             String responseXml = processingService.getResponsePayload(id);

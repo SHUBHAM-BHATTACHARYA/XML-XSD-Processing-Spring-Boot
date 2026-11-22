@@ -1,0 +1,7 @@
+G:\Spring-Boot\xmlProcessing>git init
+G:\Spring-Boot\xmlProcessing>git add .
+G:\Spring-Boot\xmlProcessing>git commit -m "Initial commit"
+G:\Spring-Boot\xmlProcessing>git branch -M main
+G:\Spring-Boot\xmlProcessing>git remote add origin git@github.com:SHUBHAM-BHATTACHARYA/XML-XSD-Processing-Spring-Boot.git
+G:\Spring-Boot\xmlProcessing>git push -u origin main
+

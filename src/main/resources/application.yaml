@@ -18,6 +18,17 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.SQLServerDialect
 
+  # JWT Authentication using pem file
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:certs/public.pem
+
+jwt:
+  private-key-location: file:G:/Spring-Boot/Vault/private.pem
+  expiration-ms: 3600000 # 1 hour
+
 # Swagger UI Path: http://localhost:8080/swagger-ui.html
 springdoc:
   swagger-ui:
